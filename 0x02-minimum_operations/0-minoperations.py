@@ -1,17 +1,19 @@
 #!/usr/bin/python3
+""" 0-minoperations"""
 
 
 def minOperations(n):
-    if n <= 1:
+    """
+    minOperations
+    Gets fewest  operations needed to result in exactly n H characters
+    """
+    if (n < 2):
         return 0
-    
-    oper = 0
-    fact = 2
-    
-    while n > 1:
-        while n % fact == 0:
-            oper += fact
-            n //= fact
-        fact += 1
-    
-    return oper
+    ops, root = 0, 2
+    while root <= n:
+        if n % root == 0:
+            ops += root
+            n = n / root
+            root -= 1
+        root += 1
+    return ops
